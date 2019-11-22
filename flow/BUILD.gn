@@ -4,8 +4,8 @@
 
 if (is_fuchsia) {
   import("//build/fuchsia/sdk.gni")
+  import("$flutter_root/tools/fuchsia/fuchsia_archive.gni")
 }
-
 import("$flutter_root/testing/testing.gni")
 
 source_set("flow") {
@@ -162,4 +162,14 @@ executable("flow_unittests") {
     "//third_party/googletest:gtest",
     "//third_party/skia",
   ]
+}
+
+if (is_fuchsia) {
+  fuchsia_test_archive("flow_tests") {
+    deps = [
+      ":flow_unittests",
+    ]
+
+    binary = "flow_unittests"
+  }
 }
