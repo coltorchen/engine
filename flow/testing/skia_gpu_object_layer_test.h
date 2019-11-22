@@ -16,14 +16,10 @@ namespace testing {
 // are destroyed on a |SkiaUnrefQueue|.
 class SkiaGPUObjectLayerTest : public LayerTestBase<ThreadTest> {
  public:
+  SkiaGPUObjectLayerTest();
+  ~SkiaGPUObjectLayerTest() override;
+
   fml::RefPtr<SkiaUnrefQueue> unref_queue() { return unref_queue_; }
-
- protected:
-  // |testing::Test|
-  void SetUp() override;
-
-  // |testing::Test|
-  void TearDown() override;
 
  private:
   fml::RefPtr<SkiaUnrefQueue> unref_queue_;

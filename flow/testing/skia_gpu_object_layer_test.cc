@@ -14,9 +14,7 @@ SkiaGPUObjectLayerTest::SkiaGPUObjectLayerTest()
           GetCurrentTaskRunner(),
           fml::TimeDelta::FromSeconds(0))) {}
 
-void SkiaGPUObjectLayerTest::TearDown() {
-  unref_queue_ = nullptr;
-}
+SkiaGPUObjectLayerTest::~SkiaGPUObjectLayerTest() = default;
 
 }  // namespace testing
 }  // namespace flutter
