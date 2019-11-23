@@ -18,7 +18,6 @@ namespace testing {
 class EmbedderTest : public ThreadTest {
  public:
   EmbedderTest();
-
   ~EmbedderTest() override;
 
   std::string GetFixturesDirectory() const;
@@ -27,12 +26,6 @@ class EmbedderTest : public ThreadTest {
 
  private:
   std::unique_ptr<EmbedderTestContext> embedder_context_;
-
-  // |testing::Test|
-  void SetUp() override;
-
-  // |testing::Test|
-  void TearDown() override;
 
   FML_DISALLOW_COPY_AND_ASSIGN(EmbedderTest);
 };

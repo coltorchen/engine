@@ -25,7 +25,6 @@ namespace testing {
 class ShellTest : public ThreadTest {
  public:
   ShellTest();
-
   ~ShellTest();
 
   Settings CreateSettingsForFixture();
@@ -78,17 +77,10 @@ class ShellTest : public ThreadTest {
   // is unpredictive.
   static int UnreportedTimingsCount(Shell* shell);
 
- protected:
-  // |testing::ThreadTest|
-  void SetUp() override;
-
-  // |testing::ThreadTest|
-  void TearDown() override;
-
  private:
-  fml::UniqueFD assets_dir_;
   std::shared_ptr<TestDartNativeResolver> native_resolver_;
-  std::unique_ptr<ThreadHost> thread_host_;
+  fml::UniqueFD assets_dir_;
+  ThreadHost thread_host_;
 
   void SetSnapshotsAndAssets(Settings& settings);
 };

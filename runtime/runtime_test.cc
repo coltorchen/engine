@@ -11,7 +11,10 @@ namespace flutter {
 namespace testing {
 
 RuntimeTest::RuntimeTest()
-    : native_resolver_(std::make_shared<TestDartNativeResolver>()) {}
+    : native_resolver_(std::make_shared<TestDartNativeResolver>()),
+      assets_dir_(fml::OpenDirectory(GetFixturesPath(),
+                                     false,
+                                     fml::FilePermission::kRead)) {}
 
 RuntimeTest::~RuntimeTest() = default;
 
@@ -65,19 +68,6 @@ Settings RuntimeTest::CreateSettingsForFixture() {
   };
   SetSnapshotsAndAssets(settings);
   return settings;
-}
-
-// |testing::ThreadTest|
-void RuntimeTest::SetUp() {
-  assets_dir_ =
-      fml::OpenDirectory(GetFixturesPath(), false, fml::FilePermission::kRead);
-  ThreadTest::SetUp();
-}
-
-// |testing::ThreadTest|
-void RuntimeTest::TearDown() {
-  ThreadTest::TearDown();
-  assets_dir_.reset();
 }
 
 void RuntimeTest::AddNativeCallback(std::string name,
