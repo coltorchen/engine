@@ -82,22 +82,21 @@ TEST_F(OpacityLayerTest, FullyOpaque) {
   layer_bounds.makeOffset(-child_offset.fX, -child_offset.fY)
       .roundOut(&opacity_bounds);
   layer->Paint(paint_context());
-  EXPECT_EQ(
-      mock_canvas().draw_calls(),
-      std::vector({MockCanvas::DrawCall{0, MockCanvas::SaveData{1}},
-                   MockCanvas::DrawCall{
-                       1, MockCanvas::ConcatMatrixData{child_transform}},
+  auto expected_draw_calls = std::vector(
+      {MockCanvas::DrawCall{0, MockCanvas::SaveData{1}},
+       MockCanvas::DrawCall{1, MockCanvas::ConcatMatrixData{child_transform}},
 #ifndef SUPPORT_FRACTIONAL_TRANSLATION
-                   MockCanvas::DrawCall{
-                       1, MockCanvas::SetMatrixData{integral_child_transform}},
+       MockCanvas::DrawCall{
+           1, MockCanvas::SetMatrixData{integral_child_transform}},
 #endif
-                   MockCanvas::DrawCall{
-                       1, MockCanvas::SaveLayerData{opacity_bounds,
-                                                    opacity_paint, nullptr, 2}},
-                   MockCanvas::DrawCall{
-                       2, MockCanvas::DrawPathData{child_path, child_paint}},
-                   MockCanvas::DrawCall{2, MockCanvas::RestoreData{1}},
-                   MockCanvas::DrawCall{1, MockCanvas::RestoreData{0}}}));
+       MockCanvas::DrawCall{
+           1, MockCanvas::SaveLayerData{opacity_bounds, opacity_paint, nullptr,
+                                        2}},
+       MockCanvas::DrawCall{2,
+                            MockCanvas::DrawPathData{child_path, child_paint}},
+       MockCanvas::DrawCall{2, MockCanvas::RestoreData{1}},
+       MockCanvas::DrawCall{1, MockCanvas::RestoreData{0}}});
+  EXPECT_EQ(mock_canvas().draw_calls(), expected_draw_calls);
 }
 
 }  // namespace testing
