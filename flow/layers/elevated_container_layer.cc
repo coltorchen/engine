@@ -4,6 +4,8 @@
 
 #include "flutter/flow/layers/elevated_container_layer.h"
 
+#include "flutter/fml/trace_event.h"
+
 namespace flutter {
 namespace {
 

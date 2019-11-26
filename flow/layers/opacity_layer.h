@@ -9,6 +9,8 @@
 #if defined(OS_FUCHSIA)
 #include "flutter/flow/layers/fuchsia_system_composited_layer.h"
 #endif
+#include "flutter/fml/macros.h"
+#include "third_party/skia/include/core/SkPoint.h"
 
 namespace flutter {
 
@@ -53,7 +55,7 @@ class OpacityLayer : public OpacityLayerBase {
   // to many leaf layers. Therefore we try to capture that offset here to stop
   // the propagation as repainting the OpacityLayer is expensive.
   OpacityLayer(SkAlpha alpha, const SkPoint& offset);
-  ~OpacityLayer() override;
+  ~OpacityLayer() override = default;
 
   void Add(std::shared_ptr<Layer> layer) override;
 

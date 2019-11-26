@@ -9,6 +9,8 @@
 #if defined(OS_FUCHSIA)
 #include "flutter/flow/layers/fuchsia_system_composited_layer.h"
 #endif
+#include "flutter/fml/macros.h"
+#include "third_party/skia/include/core/SkPath.h"
 
 namespace flutter {
 
@@ -57,6 +59,8 @@ class PhysicalShapeLayer : public PhysicalShapeLayerBase {
   SkColor shadow_color_;
   SkPath path_;
   Clip clip_behavior_;
+
+  FML_DISALLOW_COPY_AND_ASSIGN(PhysicalShapeLayer);
 };
 
 }  // namespace flutter

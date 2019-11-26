@@ -4,6 +4,9 @@
 
 #include "flutter/flow/layers/fuchsia_system_composited_layer.h"
 
+#include "flutter/flow/scene_update_context.h"
+#include "flutter/fml/trace_event.h"
+
 namespace flutter {
 
 FuchsiaSystemCompositedLayer::FuchsiaSystemCompositedLayer(SkColor color,
