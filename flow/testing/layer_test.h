@@ -52,8 +52,8 @@ class LayerTestBase : public CanvasTest<BaseT> {
             raster_time_, ui_time_, texture_registry_,
             nullptr, /* raster_cache */
             false,   /* checkerboard_offscreen_layers */
-            100.0f, /* frame_physical_depth */
-            1.0f,   /* frame_device_pixel_ratio */
+            100.0f,  /* frame_physical_depth */
+            1.0f,    /* frame_device_pixel_ratio */
         }) {}
   virtual ~LayerTestBase() = default;
 
