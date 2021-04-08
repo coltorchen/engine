@@ -113,6 +113,26 @@ embedder_source_set("embedder") {
   public_configs = []
 }
 
+#wehcat {
+config("embedder_external_library_config") {
+  defines = [
+    # Use prefixed symbols to avoid collisions with higher level API.
+    "FLUTTER_API_SYMBOL_PREFIX=Embedder",
+  ]
+}
+
+embedder_source_set("embedder_as_external_source_set") {
+  public_configs = [ ":embedder_external_library_config" ]
+}
+
+shared_library("embedder_as_external_library") {
+  output_name = "flutter_embedder"
+  deps = [
+    ":embedder_as_external_source_set",
+  ]
+}
+#} wechat
+
 embedder_source_set("embedder_as_internal_library") {
   public_configs = [ ":embedder_internal_library_config" ]
 }

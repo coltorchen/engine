@@ -9,7 +9,8 @@ group("platform") {
   if (is_mac || is_ios) {
     deps = [ "darwin" ]
   } else if (is_android) {
-    deps = [ "android" ]
+    #deps = [ "android" ]
+    deps = [ "//flutter/shell/platform/embedder:embedder_as_external_library" ]
   } else if (is_linux) {
     deps = []
     if (enable_desktop_embeddings) {
