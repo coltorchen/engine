@@ -130,7 +130,7 @@ embedder_source_set("embedder_ndk_source_set") {
 }
 
 shared_library("embedder_ndk_library") {
-  output_name = "flutter_embedder_ndk"
+  output_name = "flutter_ndk"
   deps = [
     ":embedder_ndk_source_set",
   ]
