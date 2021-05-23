@@ -117,6 +117,26 @@ embedder_source_set("embedder") {
   public_configs = []
 }
 
+# build for flutter-embedder-ndk
+config("embedder_ndk_library_config") {
+  defines = [
+    # Use prefixed symbols to avoid collisions with higher level API.
+    "FLUTTER_API_SYMBOL_PREFIX=Embedder",
+  ]
+}
+
+embedder_source_set("embedder_ndk_source_set") {
+  public_configs = [ ":embedder_ndk_library_config" ]
+}
+
+shared_library("embedder_ndk_library") {
+  output_name = "flutter_embedder_ndk"
+  deps = [
+    ":embedder_ndk_source_set",
+  ]
+}
+# end flutter-embedder-ndk
+
 embedder_source_set("embedder_as_internal_library") {
   public_configs = [ ":embedder_internal_library_config" ]
 }

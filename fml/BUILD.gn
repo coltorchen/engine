@@ -141,17 +141,25 @@ source_set("fml") {
   }
 
   if (is_android) {
+    # build for flutter-embedder-ndk,remove jni sources
+
+    # sources += [
+    #   "platform/android/jni_util.cc",
+    #   "platform/android/jni_util.h",
+    #   "platform/android/jni_weak_ref.cc",
+    #   "platform/android/jni_weak_ref.h",
+    #   "platform/android/message_loop_android.cc",
+    #   "platform/android/message_loop_android.h",
+    #   "platform/android/paths_android.cc",
+    #   "platform/android/paths_android.h",
+    #   "platform/android/scoped_java_ref.cc",
+    #   "platform/android/scoped_java_ref.h",
+    # ]
+
     sources += [
-      "platform/android/jni_util.cc",
-      "platform/android/jni_util.h",
-      "platform/android/jni_weak_ref.cc",
-      "platform/android/jni_weak_ref.h",
       "platform/android/message_loop_android.cc",
       "platform/android/message_loop_android.h",
-      "platform/android/paths_android.cc",
-      "platform/android/paths_android.h",
-      "platform/android/scoped_java_ref.cc",
-      "platform/android/scoped_java_ref.h",
+      "platform/linux/paths_linux.cc",
     ]
 
     libs += [ "android" ]
